@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import ContactsForm from './ContactsForm/index';
+import ContactList from './ContactsList/index';
+import ContactFilter from './ContactsFilter/index';
 
 export class App extends Component {
   state = {
@@ -30,15 +32,17 @@ export class App extends Component {
         number,
       }),
     }));
-  
   };
 
   handlerFilterInput = e => {
     this.setState({ filter: e.target.value });
-    console.log(this.state);
   };
 
   render() {
+    const filteredOutArray = this.state.contacts.filter(el =>
+      el.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+
     return (
       <div
         style={{
@@ -53,18 +57,8 @@ export class App extends Component {
       >
         <ContactsForm onSubmit={this.hanlerSubmitForm} />
         <h2>Contacts</h2>
-        <input type="text" name="filter" onChange={this.handlerFilterInput} />
-        <ul>
-          {this.state.contacts
-            .filter(el =>
-              el.name.toLowerCase().includes(this.state.filter.toLowerCase())
-            )
-            .map(el => (
-              <li key={el.id}>
-                {el.name}: {el.number}
-              </li>
-            ))}
-        </ul>
+        <ContactFilter onChange={this.handlerFilterInput} />
+        <ContactList contacts={filteredOutArray} />
       </div>
     );
   }
