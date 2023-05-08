@@ -38,6 +38,12 @@ export class App extends Component {
     this.setState({ filter: e.target.value });
   };
 
+  handlerDeleteItem = id => {
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   render() {
     const filteredOutArray = this.state.contacts.filter(el =>
       el.name.toLowerCase().includes(this.state.filter.toLowerCase())
@@ -58,7 +64,10 @@ export class App extends Component {
         <ContactsForm onSubmit={this.hanlerSubmitForm} />
         <h2>Contacts</h2>
         <ContactFilter onChange={this.handlerFilterInput} />
-        <ContactList contacts={filteredOutArray} />
+        <ContactList
+          contacts={filteredOutArray}
+          onDelete={this.handlerDeleteItem}
+        />
       </div>
     );
   }
