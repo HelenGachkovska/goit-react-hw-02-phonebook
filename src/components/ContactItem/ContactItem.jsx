@@ -1,14 +1,14 @@
 import React from 'react';
+import { Button, Item, Text } from './styled';
 
 const ContactItem = ({ id, name, number, onDelete }) => {
-
   return (
-    <li>
-      <span>
+    <Item>
+      <Text>
         {name}: {number}
-      </span>
-      <button onClick={() => onDelete(id)}>Delete</button>
-    </li>
+      </Text>
+      <Button onClick={() => onDelete(id)}>Delete</Button>
+    </Item>
   );
 };
 

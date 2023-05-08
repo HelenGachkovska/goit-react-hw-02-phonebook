@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Title, Form, Label, Text, Input, Button } from './styled';
 
 class ContactsForm extends Component {
   state = {
@@ -19,11 +20,11 @@ class ContactsForm extends Component {
 
   render() {
     return (
-      <form action="" onSubmit={this.hanlerSubmitForm}>
-        <h1>Phonebook</h1>
-        <label htmlFor="">
-          Name
-          <input
+      <Form onSubmit={this.hanlerSubmitForm}>
+        <Title>Phonebook</Title>
+        <Label>
+          <Text>Name</Text>
+          <Input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -31,10 +32,10 @@ class ContactsForm extends Component {
             required
             onChange={this.handlerInput}
           />
-        </label>
-        <label htmlFor="">
-          Number
-          <input
+        </Label>
+        <Label>
+          <Text>Number</Text>
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -42,9 +43,9 @@ class ContactsForm extends Component {
             required
             onChange={this.handlerInput}
           />
-        </label>
-        <button>Add contact</button>
-      </form>
+        </Label>
+        <Button>Add contact</Button>
+      </Form>
     );
   }
 }

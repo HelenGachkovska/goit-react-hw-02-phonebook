@@ -1,8 +1,9 @@
 import React from 'react';
+import {Input } from './styled';
 
 const ContactFilter = ({ onChange }) => (
   <label>
-    <input type="text"  onChange={onChange} />
+    <Input type="text"  onChange={onChange} />
   </label>
 );
 

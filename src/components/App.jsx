@@ -52,7 +52,7 @@ export class App extends Component {
     return (
       <div
         style={{
-          height: '100vh',
+          // height: '100vh',
           display: 'flex',
           justifyContent: 'center',
           flexDirection: 'column',
@@ -62,7 +62,17 @@ export class App extends Component {
         }}
       >
         <ContactsForm onSubmit={this.hanlerSubmitForm} />
-        <h2>Contacts</h2>
+        <h2
+          style={{
+            fontStyle: 'normal',
+            fontWeight: 600,
+            fontSize: 42,
+            lineHeight: 1.62,
+            textAlign: 'center',
+          }}
+        >
+          Contacts
+        </h2>
         <ContactFilter onChange={this.handlerFilterInput} />
         <ContactList
           contacts={filteredOutArray}
