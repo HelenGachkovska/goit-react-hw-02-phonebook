@@ -73,7 +73,7 @@ export class App extends Component {
         >
           Contacts
         </h2>
-        <ContactFilter onChange={this.handlerFilterInput} />
+        <ContactFilter value={this.state.filter} onChange={this.handlerFilterInput} />
         <ContactList
           contacts={filteredOutArray}
           onDelete={this.handlerDeleteItem}
